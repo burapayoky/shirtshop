@@ -24,3 +24,9 @@ class FavoriteCartbuttonClickedEvent extends FavoriteEvent {
 }
 
 class FavoriteNavigateCartEvent extends FavoriteEvent {}
+
+// class FavoritePopEvent extends FavoriteEvent {
+//   final BuildContext context;
+
+//   FavoritePopEvent({required this.context});
+// }

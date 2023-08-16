@@ -17,8 +17,13 @@ class FavoriteSuccesState extends FavoriteState {
   const FavoriteSuccesState({required this.favoriteitem});
 }
 
+class FavoriteRemoveSuccessState extends FavoriteActionState {}
+
 class FavoriteResetState extends FavoriteActionState {}
 
 class FavoriteItemToCartedActionPageState extends FavoriteActionState {}
 
 class FavoriteNavigateCartState extends FavoriteActionState {}
+
+//class FavoritePopState extends FavoriteActionState {}
+class FavoriteEmtyState extends FavoriteState {}

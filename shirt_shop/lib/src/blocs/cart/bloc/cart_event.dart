@@ -15,4 +15,8 @@ class CartRemoveFromCartEvet extends CartEvent {
   CartRemoveFromCartEvet({required this.productDataModel});
 }
 
+class CartRemoveFromCartSuccesEvet extends CartEvent {}
+
 class CartResetEvent extends CartEvent {}
+//
+//class CartEventSumprice extends CartEvent {}

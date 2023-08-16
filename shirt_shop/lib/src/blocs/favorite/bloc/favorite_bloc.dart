@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import 'package:shirt_shop/src/data/Favorite_item.dart';
 import 'package:shirt_shop/src/data/cart_items.dart';
 import 'package:shirt_shop/src/models/home_product_model.dart';
@@ -10,12 +11,16 @@ part 'favorite_state.dart';
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   FavoriteBloc() : super(FavoriteInitial()) {
     on<FavoriteInitialEvent>((event, emit) {
-      emit(FavoriteSuccesState(favoriteitem: FavoriteItem));
+      if (FavoriteItem.isNotEmpty) {
+        emit(FavoriteSuccesState(favoriteitem: FavoriteItem));
+      } else {
+        emit((FavoriteEmtyState()));
+      }
     });
     on<FavoriteRemoveFromeFavoriteEvet>((event, emit) {
       FavoriteItem.remove(event.productDataModel);
       emit(FavoriteSuccesState(favoriteitem: FavoriteItem));
-      emit(FavoriteResetState());
+      emit(FavoriteRemoveSuccessState());
     });
     on<FavoriteCartbuttonClickedEvent>((event, emit) {
       cartItem.add(event.clickedProduct);
@@ -26,5 +31,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       print('cartadded');
       emit(FavoriteNavigateCartState());
     });
+    // on<FavoritePopEvent>((event, emit) {
+    //   Navigator.pop(event.context);
+    //   print('bug');
+    //   emit(FavoritePopState());
+    // });
   }
 }

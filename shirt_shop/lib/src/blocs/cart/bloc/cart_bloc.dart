@@ -9,12 +9,21 @@ part 'cart_state.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitial()) {
     on<CartInitialEvent>((event, emit) {
-      emit(CartSuccesState(cartItem: cartItem));
+      if (cartItem.isNotEmpty) {
+        emit(CartSuccesState(cartItem: cartItem));
+      } else {
+        emit(CartSuccesEmtyState());
+      }
     });
     on<CartRemoveFromCartEvet>((event, emit) {
       cartItem.remove(event.productDataModel);
       emit(CartSuccesState(cartItem: cartItem));
       emit(CartRemoveSuccesState());
     });
+    //  on<CartEventSumprice>((event, emit) {
+
+    //   //emit HomeNavigateToWishlistActionPageState ขึ้นมา
+
+    // });
   }
 }

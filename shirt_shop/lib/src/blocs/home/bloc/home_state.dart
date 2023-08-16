@@ -19,15 +19,35 @@ class HomeLoadingSuccessState extends HomeState {
   HomeLoadingSuccessState({required this.product});
 }
 
+class HomeSuccessWomenState extends HomeState {
+  final List<ProductDataModel> product;
+
+  HomeSuccessWomenState({required this.product});
+}
+
+class HomeSuccessKidState extends HomeState {
+  final List<ProductDataModel> product;
+
+  HomeSuccessKidState({required this.product});
+}
+
+class HomeSuccessHomePageState extends HomeState {
+  final List<ProductDataModel> product;
+
+  const HomeSuccessHomePageState({required this.product});
+}
+
 class HomeErrorState extends HomeState {}
 
-//Initial
+///////////////////////////////////////Initial///////////////////////////////////////
 class HomeInitial extends HomeState {}
 
 //Navigate
 class HomeNavigateToFavoriteActionPageState extends HomeActionState {}
 
 class HomeNavigateToCartActionPageState extends HomeActionState {}
+
+//class HomeNavigateMenPageState extends HomeActionState {}
 
 //add
 class HomeItemToFavoritedActionPageState extends HomeActionState {}

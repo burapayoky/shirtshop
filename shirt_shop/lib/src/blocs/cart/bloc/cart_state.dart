@@ -13,11 +13,18 @@ class CartInitial extends CartState {}
 
 class CartSuccesState extends CartState {
   final List<ProductDataModel> cartItem;
-
   const CartSuccesState({required this.cartItem});
+  double get totalPrice {
+    return cartItem
+        .map((product) => product.price)
+        .fold(0, (prev, price) => prev + price);
+  }
 }
 
+class CartSuccesEmtyState extends CartState {}
+
 class CartRemoveSuccesState extends CartActionState {}
+
 
 
 // class CartState extends Equatable {

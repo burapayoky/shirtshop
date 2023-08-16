@@ -9,6 +9,12 @@ abstract class HomeEvent extends Equatable {
 
 class HomeInitailEvent extends HomeEvent {}
 
+class HomeLoadingWomenEvent extends HomeEvent {}
+
+class HomeLoadingKidEvent extends HomeEvent {}
+
+class HomeLoadingHomeEvent extends HomeEvent {}
+
 //ปุ่มwishlishถูกกด
 class HomeFavoriteButtonClickedEvent extends HomeEvent {
   final ProductDataModel clickedProduct;
@@ -28,3 +34,6 @@ class HomeCartButtonClickedEvent extends HomeEvent {
 class HomeFavoriteNavigatEvent extends HomeEvent {}
 
 class HomeCartNavigatEvent extends HomeEvent {}
+
+//class HomeMenNavigatEvent extends HomeEvent {}
+
