@@ -80,11 +80,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeCartButtonClickedEvent>((event, emit) {
       print('Cart add');
       cartItem.add(event.clickedProduct);
-      emit(HomeItemToCartedActionPageState());
+      emit(HomeItemToCartedActionPageState(cartItem: cartItem));
     });
     //Navigate กดปุ่มสิ่งที่ถูกใจบนappbar
     on<HomeFavoriteNavigatEvent>((event, emit) {
       //emit HomeNavigateToWishlistActionPageState ขึ้นมา
+      print('object');
       emit(HomeNavigateToFavoriteActionPageState());
     });
     on<HomeCartNavigatEvent>((event, emit) {

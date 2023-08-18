@@ -19,6 +19,8 @@ class _FavoritePageState extends State<FavoritePage> {
   void initState() {
     context.read<FavoriteBloc>().add(FavoriteInitialEvent());
     super.initState();
+
+    // Start the animation when the page is built
   }
 
   @override
@@ -54,6 +56,7 @@ class _FavoritePageState extends State<FavoritePage> {
               final succesState = state as FavoriteSuccesState;
               double paddingValue = screenWidth < 600 ? 16.0 : 50.0;
               EdgeInsets padding = EdgeInsets.all(paddingValue);
+
               return Padding(
                 padding: padding,
                 child: ListView.builder(

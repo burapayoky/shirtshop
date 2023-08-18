@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shirt_shop/main.dart';
+//import 'package:shirt_shop/main.dart';
+import 'package:shirt_shop/src/screens/cart_screen.dart';
+import 'package:shirt_shop/src/screens/favorite_screen.dart';
+
 import 'package:shirt_shop/src/screens/widgets/product_widget.dart';
 
 import '../blocs/home/bloc/home_bloc.dart';
@@ -13,6 +16,10 @@ class ShirtMenPage extends StatefulWidget {
 }
 
 class _ShirtMenPageState extends State<ShirtMenPage> {
+  bool isLargeScreen(double screenWidth) {
+    return screenWidth >= 600;
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -27,15 +34,49 @@ class _ShirtMenPageState extends State<ShirtMenPage> {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is HomeNavigateToFavoriteActionPageState) {
-          Navigator.pushNamed(context, AppRoute.favorite);
+          //Navigator.pushNamed(context, AppRoute.favorite);
+          Navigator.push(
+            context,
+            PageRouteBuilder(
+              transitionDuration: Duration(milliseconds: 400),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                final slideAnimation =
+                    Tween(begin: Offset(0, 1), end: Offset(0, 0))
+                        .animate(animation);
+
+                return SlideTransition(
+                  position: slideAnimation,
+                  child: child,
+                );
+              },
+              pageBuilder: (context, animation, secondaryAnimation) {
+                return const FavoritePage();
+              },
+            ),
+          );
         } else if (state is HomeNavigateToCartActionPageState) {
-          Navigator.pushNamed(context, AppRoute.cart);
-        } else if (state is HomeItemToCartedActionPageState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('สินค้าเพิ่มลงในตะกร้า')));
-        } else if (state is HomeItemToFavoritedActionPageState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('ถูกใจสินค้า')));
+          //Navigator.pushNamed(context, AppRoute.cart);
+          Navigator.push(
+            context,
+            PageRouteBuilder(
+              transitionDuration: const Duration(milliseconds: 400),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                final slideAnimation =
+                    Tween(begin: Offset(0, 1), end: Offset(0, 0))
+                        .animate(animation);
+
+                return SlideTransition(
+                  position: slideAnimation,
+                  child: child,
+                );
+              },
+              pageBuilder: (context, animation, secondaryAnimation) {
+                return CartPage();
+              },
+            ),
+          );
         }
       },
       builder: (context, state) {
@@ -47,6 +88,8 @@ class _ShirtMenPageState extends State<ShirtMenPage> {
             ));
           case HomeLoadingSuccessState:
             final successState = state as HomeLoadingSuccessState;
+            final screenWidth = MediaQuery.of(context).size.width;
+            int crossAxisCount = isLargeScreen(screenWidth) ? 3 : 2;
             return Scaffold(
               body: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -58,13 +101,12 @@ class _ShirtMenPageState extends State<ShirtMenPage> {
                     Expanded(
                       child: GridView.builder(
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount:
-                                2, // Adjust the number of columns here
+                                crossAxisCount, // Adjust the number of columns
                             crossAxisSpacing: 8.0,
                             mainAxisSpacing: 2.0,
-                            childAspectRatio:
-                                0.75, // Adjust the aspect ratio here
+                            childAspectRatio: 0.75,
                           ),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,

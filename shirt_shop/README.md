@@ -1,6 +1,7 @@
 # shirt_shop
 
 A new Flutter project.
+create A shirt_shopping app with flutter and bloc 
 
 ## Getting Started
 

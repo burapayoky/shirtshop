@@ -1,3 +1,4 @@
+import 'package:animated_icon/animated_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -82,19 +83,34 @@ class FavoriteProductWidget extends StatelessWidget {
                         color: Colors.red,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
+                    // IconButton(
+                    //   onPressed: () {
+                    //     context.read<FavoriteBloc>().add(
+                    //           FavoriteCartbuttonClickedEvent(
+                    //             clickedProduct: productDataModel,
+                    //           ),
+                    //         );
+                    //   },
+                    //   icon: const Icon(
+                    //     Icons.shopping_cart,
+                    //     color: Colors.blue,
+                    //   ),
+                    // ),
+                    AnimateIcon(
+                      key: UniqueKey(),
+                      onTap: () {
                         context.read<FavoriteBloc>().add(
                               FavoriteCartbuttonClickedEvent(
                                 clickedProduct: productDataModel,
                               ),
                             );
                       },
-                      icon: const Icon(
-                        Icons.shopping_cart,
-                        color: Colors.blue,
-                      ),
-                    ),
+                      iconType: IconType.animatedOnTap,
+                      height: 25,
+                      width: 25,
+                      color: Colors.blue,
+                      animateIcon: AnimateIcons.paid,
+                    )
                   ],
                 ),
               ],

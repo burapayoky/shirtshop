@@ -15,7 +15,6 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   void initState() {
-    // TODO: implement initState
     context.read<CartBloc>().add(CartInitialEvent());
     super.initState();
   }
@@ -44,8 +43,8 @@ class _CartPageState extends State<CartPage> {
           switch (state.runtimeType) {
             case CartSuccesState:
               final succesState = state as CartSuccesState;
-              final successlenght = succesState.cartItem.length;
-              print(successlenght);
+              // final successlenght = succesState.cartItem.length;
+              // print(successlenght);
               return Column(
                 children: [
                   Expanded(
@@ -157,3 +156,36 @@ class _CartPageState extends State<CartPage> {
     );
   }
 }
+              // return Padding(
+              //   padding: padding,
+              //   child: ListView.builder(
+              //     itemCount: succesState.favoriteitem.length,
+              //     itemBuilder: (context, indext) {
+              //       // Apply custom animations here
+              //       return AnimatedBuilder(
+              //         animation: animationController,
+              //         builder: (context, child) {
+              //           double animationValue = Curves.easeOutBack.transform(
+              //             animationController.value,
+              //           );
+              //           return Transform.translate(
+              //             offset: Offset(0, (1 - animationValue) * 50),
+              //             child: child,
+              //           );
+              //         },
+              //         child: FavoriteProductWidget(
+              //             productDataModel: succesState.favoriteitem[indext]),
+              //       );
+              //     },
+              //   ),
+              // );
+  //             @override
+  // void dispose() {
+  //   animationController.dispose(); // Dispose the animation controller
+  //   super.dispose();
+  // }
+  // animationController = AnimationController(
+  //     vsync: this,
+  //     duration: Duration(
+  //         milliseconds: 500), // Adjust the animation duration as needed
+  //   );

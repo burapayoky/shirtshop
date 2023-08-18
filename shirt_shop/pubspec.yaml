@@ -39,6 +39,7 @@ dependencies:
   equatable: ^2.0.5
   provider: ^6.0.5
   icon_badge: ^1.0.0
+  animated_icon: ^0.0.5
 
 
 dev_dependencies:

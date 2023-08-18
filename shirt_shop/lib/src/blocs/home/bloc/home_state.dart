@@ -52,4 +52,10 @@ class HomeNavigateToCartActionPageState extends HomeActionState {}
 //add
 class HomeItemToFavoritedActionPageState extends HomeActionState {}
 
-class HomeItemToCartedActionPageState extends HomeActionState {}
+class HomeItemToCartedActionPageState extends HomeActionState {
+  final List<ProductDataModel> cartItem;
+
+  HomeItemToCartedActionPageState({required this.cartItem});
+  @override
+  List<Object> get props => [cartItem];
+}
